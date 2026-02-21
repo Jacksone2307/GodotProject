@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlrw76qc8ofx"]
+
+[ext_resource type="TileSet" uid="uid://bp52pqvp3wfee" path="res://Tileset/grass.tres" id="1_jvowu"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="2_0pvx6"]
+[ext_resource type="Texture2D" uid="uid://snq2fu60b4em" path="res://sprites/player.png" id="3_wc1vb"]
+[ext_resource type="Texture2D" uid="uid://u2i47v61dk86" path="res://sprites/gun.png" id="4_epvsu"]
+[ext_resource type="Script" path="res://Scripts/gun.gd" id="5_a1br6"]
+[ext_resource type="Texture2D" uid="uid://drblxqqkjl65x" path="res://sprites/Bullet.png" id="6_mvusw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b0yn"]
+size = Vector2(16, 16)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Obstacles" type="StaticBody2D" parent="."]
+
+[node name="TileMap" type="TileMap" parent="Obstacles"]
+tile_set = ExtResource("1_jvowu")
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 65536, 0, 131072, 65536, 1, 65537, 65536, 0, 131073, 65536, 1, 65538, 65536, 0, 131074, 65536, 1, 65539, 65536, 0, 131075, 65536, 1, 65540, 65536, 0, 131076, 65536, 1, 65541, 65536, 0, 131077, 65536, 1, 65542, 65536, 0, 131078, 65536, 1, 65543, 65536, 0, 131079, 65536, 1, 65544, 65536, 0, 131080, 65536, 1, 65545, 65536, 0, 131081, 65536, 1, 65546, 65536, 0, 131082, 65536, 1, 65547, 65536, 0, 131083, 65536, 1, 65548, 65536, 0, 131084, 65536, 1, 65549, 65536, 0, 131085, 65536, 1, 131071, 0, 0, 196607, 0, 1, 65550, 131072, 0, 131086, 131072, 1, -196593, 196608, 0, -131057, 196608, 1, -65521, 196608, 2, -458737, 196608, 0, -393201, 196608, 1, -327665, 196608, 2)
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("2_0pvx6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture = ExtResource("3_wc1vb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_5b0yn")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.4
+drag_top_margin = 0.4
+drag_right_margin = 0.4
+editor_draw_drag_margin = true
+
+[node name="Gun" type="Sprite2D" parent="Player"]
+position = Vector2(12, 0)
+texture = ExtResource("4_epvsu")
+script = ExtResource("5_a1br6")
+
+[node name="Marker2D" type="Marker2D" parent="Player/Gun"]
+position = Vector2(4, -1)
+
+[node name="Bullet" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Bullet"]
+position = Vector2(25, -1)
+texture = ExtResource("6_mvusw")
