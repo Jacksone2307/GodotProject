@@ -11,8 +11,14 @@ func _ready():
 
 func _physics_process(delta):
 	velocity = target_position * SPEED
-	move_and_slide()
 	rotation = velocity.angle()
+	var collision = move_and_collide(velocity * delta)
 	
-	if(is_on_floor() or is_on_wall() or is_on_ceiling()):
+	
+	if collision:
 		queue_free()
+	
+	
+
+func _hit_character():
+	pass

@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 
 @export var health = 100
+@export var health_bar: ProgressBar
+@export var collider: CollisionShape2D
 
-func take_damage(damage):
-	health -= damage
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctcd5q0jkeuan"]
+[gd_scene load_steps=8 format=3 uid="uid://ctcd5q0jkeuan"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6ngao"]
 [ext_resource type="Texture2D" uid="uid://snq2fu60b4em" path="res://sprites/player.png" id="2_eb4y0"]
@@ -9,9 +9,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxkq3"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfkjr"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider")]
 collision_layer = 2
 script = ExtResource("1_6ngao")
+health_bar = NodePath("ProgressBar")
+collider = NodePath("CollisionShape2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_eb4y0")
@@ -38,3 +43,12 @@ bullet_scene = ExtResource("5_xv0yt")
 
 [node name="Marker2D" type="Marker2D" parent="Gun"]
 position = Vector2(4, 0)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = -10.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_cfkjr")
+step = 1.0
+show_percentage = false
