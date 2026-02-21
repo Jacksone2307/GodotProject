@@ -16,6 +16,7 @@ func _physics_process(delta):
 	
 	
 	if collision:
+		var collider = collision.get_collider()
 		queue_free()
 	
 	

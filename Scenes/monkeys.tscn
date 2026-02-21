@@ -1,9 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2gy27xkv6g6e"]
+[gd_scene load_steps=2 format=3 uid="uid://b2gy27xkv6g6e"]
 
 [ext_resource type="Script" path="res://Scripts/monkeys.gd" id="1_p3jhy"]
-[ext_resource type="PackedScene" uid="uid://b32twcrnffrpt" path="res://Scenes/monkey_basic.tscn" id="2_ivwfw"]
 
-[node name="Monkey" type="Node2D"]
+[node name="Monkey" type="CharacterBody2D"]
 script = ExtResource("1_p3jhy")
-
-[node name="MonkeyBasic" parent="." instance=ExtResource("2_ivwfw")]

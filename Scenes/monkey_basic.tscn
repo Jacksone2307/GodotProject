@@ -3,17 +3,15 @@
 [ext_resource type="Script" path="res://Scripts/MonkeyBasic.gd" id="1_8htfm"]
 [ext_resource type="Texture2D" uid="uid://dc6v4erc5siw5" path="res://sprites/enemy.png" id="2_cmqy6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_172g6"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4f12"]
 size = Vector2(16, 16)
 
-[node name="MonkeyBasic" type="Node2D"]
+[node name="CharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("collider")]
 script = ExtResource("1_8htfm")
-health = null
+collider = NodePath("CollisionShape2D2")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D2" type="Sprite2D" parent="."]
 texture = ExtResource("2_cmqy6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_172g6")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y4f12")
