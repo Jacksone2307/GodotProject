@@ -1,22 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp7dx3ayklilu"]
+[gd_scene load_steps=3 format=3 uid="uid://b2gy27xkv6g6e"]
 
-[ext_resource type="Script" path="res://Scripts/Monkey.gd" id="1_oto6g"]
-[ext_resource type="Script" path="res://Scripts/MonkeyBasic.gd" id="2_auaek"]
-[ext_resource type="Texture2D" uid="uid://dc6v4erc5siw5" path="res://sprites/enemy.png" id="3_aa2v1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_172g6"]
-size = Vector2(16, 16)
+[ext_resource type="Script" path="res://Scripts/monkeys.gd" id="1_p3jhy"]
+[ext_resource type="PackedScene" uid="uid://b32twcrnffrpt" path="res://Scenes/monkey_basic.tscn" id="2_ivwfw"]
 
 [node name="Monkey" type="Node2D"]
-script = ExtResource("1_oto6g")
+script = ExtResource("1_p3jhy")
 
-[node name="MonkeyBasic" type="Node2D" parent="."]
-script = ExtResource("2_auaek")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="MonkeyBasic"]
-
-[node name="Sprite2D" type="Sprite2D" parent="MonkeyBasic/CharacterBody2D"]
-texture = ExtResource("3_aa2v1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MonkeyBasic/CharacterBody2D"]
-shape = SubResource("RectangleShape2D_172g6")
+[node name="MonkeyBasic" parent="." instance=ExtResource("2_ivwfw")]

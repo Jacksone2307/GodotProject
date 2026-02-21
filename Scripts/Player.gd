@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Character
 
 
 const SPEED = 200
@@ -33,7 +33,7 @@ func _physics_process(delta):
 	
 	if velocity.x:
 		$Sprite2D.flip_h = velocity.x < 0
-
+	
 	move_and_slide()
 
 func _input(event):
