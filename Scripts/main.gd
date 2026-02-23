@@ -16,3 +16,7 @@ func _input(event):
 		player = player_scene.instantiate()
 		add_child(player)
 
+
+func _on_monkey_basic_no_health():
+	pass
+	#queue.free(Monkey) # Replace with function body.

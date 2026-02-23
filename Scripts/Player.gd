@@ -1,5 +1,5 @@
 extends Character
-
+class_name Player
 
 const SPEED = 200
 const JUMP_VELOCITY = -250
@@ -38,5 +38,7 @@ func _input(event):
 	if event.is_action_pressed("Mouse_Left"):
 		$Gun.shoot()
 		velocity += 0.5*abs(JUMP_VELOCITY)*(global_position - get_global_mouse_position()).normalized()
+		
+
 
 
