@@ -32,7 +32,7 @@ func _physics_process(delta):
 	if velocity.x:
 		$Sprite2D.flip_h = velocity.x < 0
 	
-	move_and_slide()
+
 
 func _input(event):
 	if event.is_action_pressed("Mouse_Left"):
