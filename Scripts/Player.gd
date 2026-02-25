@@ -29,8 +29,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	if velocity.x:
-		$Sprite2D.flip_h = velocity.x < 0
+	
 	
 
 
