@@ -39,5 +39,7 @@ func _input(event):
 		velocity += 0.5*abs(JUMP_VELOCITY)*(global_position - get_global_mouse_position()).normalized()
 		
 
+func die():
+	print("PLAYER DEAD")
 
 

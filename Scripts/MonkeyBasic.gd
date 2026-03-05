@@ -2,7 +2,7 @@ extends Monkey
 
 @onready var player : Player = get_tree().get_first_node_in_group("Player")
 
-var i = 0
+var counter = 0
 
 var alerted: bool = false
 var see_player: bool = false
@@ -38,6 +38,12 @@ func _physics_process(delta):
 	
 	if alerted:
 		alert()
+		
+	var distance = global_position.distance_to(player.global_position)
+	if alerted and distance < 26 and counter % 40 == 0:
+		attack()
+		
+	counter += 1
 	
 	
 func alert():
@@ -61,3 +67,6 @@ func _on_area_2d_left_body_entered(body):
 func absent_minded_movement():
 	pass 
 	#Path following???
+	
+func attack():
+	player.hit(20)

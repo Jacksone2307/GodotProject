@@ -15,3 +15,5 @@ func _physics_process(delta):
 func _alert():
 	pass
 
+func die():
+	queue_free()

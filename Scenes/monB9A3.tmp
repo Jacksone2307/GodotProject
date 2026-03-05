@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://b32twcrnffrpt"]
+
+[ext_resource type="Script" path="res://Scripts/MonkeyBasic.gd" id="1_8htfm"]
+[ext_resource type="Texture2D" uid="uid://dc6v4erc5siw5" path="res://sprites/enemy.png" id="2_cmqy6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4f12"]
+size = Vector2(16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnlsb"]
+bg_color = Color(1, 0, 0, 1)
+
+[node name="monkey_basic" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider") groups=["Monkeys"]]
+script = ExtResource("1_8htfm")
+health = null
+health_bar = NodePath("ProgressBar")
+collider = NodePath("CollisionShape2D")
+flipped = null
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cmqy6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_y4f12")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -14.0
+offset_top = -14.0
+offset_right = 14.0
+offset_bottom = -10.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_wnlsb")
+step = 1.0
+show_percentage = false
+
+[node name="Area2D-Right" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D-Right"]
+position = Vector2(8, -2)
+scale = Vector2(2.36887, 1)
+polygon = PackedVector2Array(-3.37713, 2, 40.5256, -22, 40.5256, 26)
+
+[node name="Area2D-Left" type="Area2D" parent="."]
+scale = Vector2(-1, 1)
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D-Left"]
+position = Vector2(8, -2)
+scale = Vector2(2.36887, 1)
+polygon = PackedVector2Array(-3.37713, 2, 40.5256, -22, 40.5256, 26)
+
+[connection signal="body_entered" from="Area2D-Right" to="." method="_on_area_2d_right_body_entered"]
+[connection signal="body_entered" from="Area2D-Left" to="." method="_on_area_2d_left_body_entered"]
