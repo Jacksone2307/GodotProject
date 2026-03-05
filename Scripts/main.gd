@@ -3,7 +3,6 @@ extends Node2D
 @export var player_scene: PackedScene
 @export var monkey_basic_scene: PackedScene
 @onready var player = $Player
-@onready var monkey_basic = $monkey_basic
 
 #var player
 

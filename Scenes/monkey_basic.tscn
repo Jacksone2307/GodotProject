@@ -9,7 +9,7 @@ size = Vector2(16, 16)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnlsb"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="monkey_basic" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider")]
+[node name="monkey_basic" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider") groups=["Monkeys"]]
 script = ExtResource("1_8htfm")
 health_bar = NodePath("ProgressBar")
 collider = NodePath("CollisionShape2D")
