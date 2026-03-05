@@ -12,7 +12,7 @@ size = Vector2(16, 16)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cfkjr"]
 bg_color = Color(1, 0, 0, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider") groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_6ngao")
 health_bar = NodePath("ProgressBar")

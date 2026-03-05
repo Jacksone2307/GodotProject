@@ -1,11 +1,13 @@
 extends Monkey
 
-@onready var player : Player = get_tree().get_nodes_in_group("Player")[0]
+@onready var player : Player = get_tree().get_first_node_in_group("Player")
+
 
 var alerted: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	super() # Replace with function body.
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

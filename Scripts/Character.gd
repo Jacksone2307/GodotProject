@@ -5,12 +5,14 @@ extends CharacterBody2D
 @export var health = 100
 @export var health_bar: ProgressBar
 @export var collider: CollisionShape2D
+@export var flipped: bool
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	health_bar.value = health
+	$Sprite2D.flip_h = flipped
 
 func _physics_process(delta):
 	# Add the gravity.
