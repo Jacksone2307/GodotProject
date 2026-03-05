@@ -28,6 +28,9 @@ func hit(damage):
 	health -= damage
 	health_bar.value = health
 	if health <= 0:
-		queue_free()
+		die()
+		
+func die():
+	pass
 
 

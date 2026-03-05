@@ -1,17 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://b32twcrnffrpt"]
+[gd_scene load_steps=5 format=3 uid="uid://b32twcrnffrpt"]
 
 [ext_resource type="Script" path="res://Scripts/MonkeyBasic.gd" id="1_8htfm"]
 [ext_resource type="Texture2D" uid="uid://dc6v4erc5siw5" path="res://sprites/enemy.png" id="2_cmqy6"]
-[ext_resource type="StyleBox" uid="uid://befil76w708d5" path="res://sprites/EmptyHealthBox.tres" id="3_hjmlj"]
-[ext_resource type="StyleBox" uid="uid://0gv70q18guun" path="res://sprites/EnemyHealthBox.tres" id="4_ex78u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4f12"]
 size = Vector2(16, 16)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnlsb"]
+bg_color = Color(1, 0, 0, 1)
+
 [node name="monkey_basic" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider") groups=["Monkeys"]]
 script = ExtResource("1_8htfm")
+health = null
 health_bar = NodePath("ProgressBar")
 collider = NodePath("CollisionShape2D")
+flipped = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_cmqy6")
@@ -24,8 +27,7 @@ offset_left = -14.0
 offset_top = -14.0
 offset_right = 14.0
 offset_bottom = -10.0
-theme_override_styles/background = ExtResource("3_hjmlj")
-theme_override_styles/fill = ExtResource("4_ex78u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wnlsb")
 step = 1.0
 show_percentage = false
 
