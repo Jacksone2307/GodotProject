@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b32twcrnffrpt"]
+[gd_scene load_steps=7 format=3 uid="uid://b32twcrnffrpt"]
 
 [ext_resource type="Script" path="res://Scripts/MonkeyBasic.gd" id="1_8htfm"]
 [ext_resource type="Texture2D" uid="uid://dc6v4erc5siw5" path="res://sprites/enemy.png" id="2_cmqy6"]
@@ -7,6 +7,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y4f12"]
 size = Vector2(16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpu1e"]
+radius = 192.167
 
 [node name="monkey_basic" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider") groups=["Monkeys"]]
 script = ExtResource("1_8htfm")
@@ -46,5 +49,12 @@ position = Vector2(8, -2)
 scale = Vector2(2.36887, 1)
 polygon = PackedVector2Array(-3.37713, 2, 40.5256, -22, 40.5256, 26)
 
+[node name="Area2D-AgroZone" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D-AgroZone"]
+shape = SubResource("CircleShape2D_vpu1e")
+
 [connection signal="body_entered" from="Area2D-Right" to="." method="_on_area_2d_right_body_entered"]
 [connection signal="body_entered" from="Area2D-Left" to="." method="_on_area_2d_left_body_entered"]
+[connection signal="body_exited" from="Area2D-AgroZone" to="." method="_on_area_2d_agro_zone_body_exited"]
