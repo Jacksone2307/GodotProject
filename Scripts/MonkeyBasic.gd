@@ -63,10 +63,19 @@ func _on_area_2d_left_body_entered(body):
 	if see_player:
 		print("Player left")
 		alerted = true
-	
+		
+
+func _on_area_2d_agro_zone_body_exited(body):
+	alerted = false
+	print("Player out of zone")
+	velocity.x = 0
+
 func absent_minded_movement():
 	pass 
 	#Path following???
 	
 func attack():
 	player.hit(20)
+
+
+
