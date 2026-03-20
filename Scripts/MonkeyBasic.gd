@@ -2,6 +2,7 @@ extends Monkey
 
 @onready var player : Player = get_tree().get_first_node_in_group("Player")
 
+
 var counter = 0
 
 var alerted: bool = false
