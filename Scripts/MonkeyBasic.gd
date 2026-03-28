@@ -32,8 +32,8 @@ func _physics_process(delta):
 	
 	#Ray cast
 	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position)
-	query.exclude = [self]
+	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position, 0x3)
+	query.exclude = [self, ]
 	var result = space_state.intersect_ray(query)
 
 	if result.get("collider") is Player:
