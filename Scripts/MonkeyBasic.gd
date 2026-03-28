@@ -23,6 +23,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	
+	#Update global position
+	if counter % 40 == 0:
+		last_position = global_position
+	
 	super(delta)
 	
 	#Ray cast
@@ -46,11 +51,23 @@ func _physics_process(delta):
 		$"Area2D-Right/CollisionPolygon2D".disabled = false
 	
 	if alerted:
-		alert()
+		chase()
+		
+		#Jump if chasing player but blocked.
+		if counter % 60 == 0 and global_position == last_position:
+			#if debugging: print("JUMPING")
+			velocity.y = -randf_range(0.75, 1) * 250
+			if int($Sprite2D.flip_h) == 0:
+				velocity.x = -run_speed
+			else:
+				velocity.x = run_speed
 		
 	var distance = global_position.distance_to(player.global_position)
 	if alerted and distance < 26 and counter % 40 == 0:
 		attack()
+	
+		
+		
 	elif not alerted:
 		passive_movement()
 	velocity.x = velocity.x
@@ -59,29 +76,32 @@ func _physics_process(delta):
 	counter += 1
 	
 	
-func alert():
+func chase():
+	set_collision_mask_value(4, false)
 	if player.position.x < position.x:
 		velocity.x = -run_speed
 	else:
 		velocity.x = run_speed
-	set_collision_mask_value(4, false)
+	
+	
+	
 
 
 func _on_area_2d_right_body_entered(body):
 	if see_player:
-		print("Player right")
+		#print("Player right")
 		alerted = true
 
 
 func _on_area_2d_left_body_entered(body):
 	if see_player:
-		print("Player left")
+		#print("Player left")
 		alerted = true
 		
 
 func _on_area_2d_agro_zone_body_exited(body):
 	alerted = false
-	print("Player out of zone")
+	#print("Player out of zone")
 	velocity.x = walk_speed
 	markers_up()
 
@@ -90,14 +110,14 @@ func markers_up():
 	
 func passive_movement():
 	if counter % 80 == 0 and velocity.x == 0:
-		if debugging: print("SWAPPING")
+		#if debugging: print("SWAPPING")
 		if int($Sprite2D.flip_h) == 0:
 			velocity.x = -walk_speed
 		else:
 			velocity.x = walk_speed
 	
 	if counter % randi_range(50,150) == 0:
-		if debugging: print("STOPPING")
+		#if debugging: print("STOPPING")
 		velocity.x = 0
 		
 	
