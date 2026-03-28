@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfn8wmlw2dnb0"]
+
+[ext_resource type="PackedScene" uid="uid://b32twcrnffrpt" path="res://Scenes/monkey_basic.tscn" id="1_essdu"]
+[ext_resource type="Texture2D" uid="uid://dq8ovnencufg7" path="res://sprites/gunCentred.png" id="2_p4rb3"]
+
+[node name="monkey_basic" instance=ExtResource("1_essdu")]
+position = Vector2(0.498779, -0.627869)
+
+[node name="Gun" type="Sprite2D" parent="." index="6"]
+position = Vector2(12, 0)
+texture = ExtResource("2_p4rb3")

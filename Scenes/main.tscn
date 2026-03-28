@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://de875nv6v88cb"]
+[gd_scene load_steps=7 format=3 uid="uid://de875nv6v88cb"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_dh5ma"]
 [ext_resource type="TileSet" uid="uid://bp52pqvp3wfee" path="res://Tileset/grass.tres" id="1_jvowu"]
 [ext_resource type="PackedScene" uid="uid://ctcd5q0jkeuan" path="res://Scenes/player.tscn" id="2_2jgd2"]
 [ext_resource type="PackedScene" uid="uid://b32twcrnffrpt" path="res://Scenes/monkey_basic.tscn" id="4_h338m"]
 [ext_resource type="PackedScene" uid="uid://djq3hfchlob1t" path="res://Scenes/markers.tscn" id="5_vsedr"]
+[ext_resource type="PackedScene" uid="uid://bfn8wmlw2dnb0" path="res://Scenes/monkey_gun.tscn" id="6_uonev"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dh5ma")
@@ -27,4 +28,7 @@ position = Vector2(330, -57)
 flipped = true
 
 [node name="MarkerMap" parent="." instance=ExtResource("5_vsedr")]
-layer_0/tile_data = PackedInt32Array(0, 0, 0, -262116, 0, 0, -262125, 0, 0, 13, 0, 0, 19, 0, 0)
+layer_0/tile_data = PackedInt32Array(0, 0, 0, -262116, 0, 0, -262125, 0, 0, 13, 0, 0, 19, 0, 0, -327643, 0, 0, -327647, 0, 0)
+
+[node name="monkey_basic3" parent="." instance=ExtResource("6_uonev")]
+position = Vector2(579.924, -83.1986)
