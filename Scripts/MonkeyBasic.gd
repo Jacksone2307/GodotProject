@@ -8,7 +8,7 @@ var run_speed = 50
 var walk_speed = run_speed * 0.75
 
 
-var alerted: bool = false
+
 var see_player: bool = false
 
 var last_position
