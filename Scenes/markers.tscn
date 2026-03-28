@@ -30,4 +30,5 @@ sources/0 = SubResource("TileSetAtlasSource_x1cx7")
 [node name="MarkerMap" type="TileMap"]
 tile_set = SubResource("TileSet_vjllu")
 format = 2
+layer_0/z_index = 1
 layer_0/tile_data = PackedInt32Array(0, 0, 0)
