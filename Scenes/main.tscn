@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://de875nv6v88cb"]
+[gd_scene load_steps=6 format=3 uid="uid://de875nv6v88cb"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_dh5ma"]
 [ext_resource type="TileSet" uid="uid://bp52pqvp3wfee" path="res://Tileset/grass.tres" id="1_jvowu"]
 [ext_resource type="PackedScene" uid="uid://ctcd5q0jkeuan" path="res://Scenes/player.tscn" id="2_2jgd2"]
 [ext_resource type="PackedScene" uid="uid://b32twcrnffrpt" path="res://Scenes/monkey_basic.tscn" id="4_h338m"]
-[ext_resource type="PackedScene" uid="uid://cydjg02icuubc" path="res://Scenes/path.tscn" id="5_syhpr"]
-[ext_resource type="PackedScene" uid="uid://3bkpk5e6t8wo" path="res://Scenes/path_follower.tscn" id="6_k4x48"]
+[ext_resource type="PackedScene" uid="uid://djq3hfchlob1t" path="res://Scenes/markers.tscn" id="5_vsedr"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_dh5ma")
@@ -19,19 +18,15 @@ layer_0/tile_data = PackedInt32Array(196626, 131072, 2, 131090, 131072, 1, 65554
 
 [node name="monkey_basic" parent="." instance=ExtResource("4_h338m")]
 position = Vector2(68, 0)
+debugging = true
 
 [node name="Player" parent="." instance=ExtResource("2_2jgd2")]
 position = Vector2(-54, 4)
 
-[node name="Path2D" parent="." instance=ExtResource("5_syhpr")]
-position = Vector2(-822, -57)
-
-[node name="PathFollow2D" parent="Path2D" instance=ExtResource("6_k4x48")]
-position = Vector2(1152, 0)
-rotation = 0.0192284
-
-[node name="monkey_basic2" parent="Path2D/PathFollow2D" instance=ExtResource("4_h338m")]
-position = Vector2(1.52588e-05, -3.8147e-06)
-rotation = -0.0192284
+[node name="monkey_basic2" parent="." instance=ExtResource("4_h338m")]
+position = Vector2(330, -57)
 scale = Vector2(1, 1)
 flipped = true
+
+[node name="MarkerMap" parent="." instance=ExtResource("5_vsedr")]
+layer_0/tile_data = PackedInt32Array(0, 0, 0, -262116, 0, 0, -262125, 0, 0, 13, 0, 0, 19, 0, 0)
