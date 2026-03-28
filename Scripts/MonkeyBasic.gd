@@ -32,8 +32,8 @@ func _physics_process(delta):
 	
 	#Ray cast
 	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position, 0x3)
-	query.exclude = [self, ]
+	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position, 0x3) #0x3 specifies 0011 binary enabling layer masks 1 and 2 (ground & player).
+	query.exclude = [self]
 	var result = space_state.intersect_ray(query)
 
 	if result.get("collider") is Player:
@@ -41,7 +41,7 @@ func _physics_process(delta):
 	else:
 		see_player = false
 	
-	
+	#Can't see player from behind.
 	if $Sprite2D.flip_h:
 		$"Area2D-Left/CollisionPolygon2D".disabled = false
 		$"Area2D-Right/CollisionPolygon2D".disabled = true
