@@ -18,7 +18,6 @@ layer_0/tile_data = PackedInt32Array(196626, 131072, 2, 131090, 131072, 1, 65554
 
 [node name="monkey_basic" parent="." instance=ExtResource("4_h338m")]
 position = Vector2(68, 0)
-debugging = true
 
 [node name="Player" parent="." instance=ExtResource("2_2jgd2")]
 position = Vector2(-54, 4)
