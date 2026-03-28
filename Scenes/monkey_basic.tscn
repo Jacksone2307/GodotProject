@@ -12,6 +12,8 @@ size = Vector2(16, 16)
 radius = 192.167
 
 [node name="monkey_basic" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider") groups=["Monkeys"]]
+collision_layer = 4
+collision_mask = 9
 script = ExtResource("1_8htfm")
 health_bar = NodePath("ProgressBar")
 collider = NodePath("CollisionShape2D")

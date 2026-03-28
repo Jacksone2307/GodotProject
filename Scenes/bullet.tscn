@@ -8,6 +8,7 @@ size = Vector2(2, 2)
 
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 0
+collision_mask = 5
 script = ExtResource("1_iwkr4")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
