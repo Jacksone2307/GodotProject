@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://bp52pqvp3wfee" path="res://Tileset/grass.tres" id="1_njsvu"]
 
-[node name="TileMap" type="TileMap"]
+[node name="GroundMap" type="TileMap"]
 tile_set = ExtResource("1_njsvu")
 format = 2
 layer_0/tile_data = PackedInt32Array(0, 196608, 3)

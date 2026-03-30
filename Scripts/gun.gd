@@ -12,11 +12,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	look_at(get_global_mouse_position())
+	#Make gun always face up.
+	if (0.5 * pi) < fmod(abs(rotation), 2*pi) and fmod(abs(rotation), 2*pi) < (1.5 * pi):
+		flip_v = 1
+	else:
+		flip_v = 0
 	
 	var direction = Input.get_axis("Left", "Right")
 	if direction:
 		position.x = direction*abs(position.x)
-		flip_v = direction < 0
 		marker_2d.position.y 
 
 func shoot():

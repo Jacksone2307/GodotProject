@@ -13,4 +13,4 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("Keyboard_R"):
-		player.position = Vector2(0,0)
+		get_tree().reload_current_scene()
