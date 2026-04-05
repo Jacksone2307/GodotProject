@@ -123,6 +123,3 @@ func passive_movement():
 	
 func attack():
 	player.hit(20)
-
-
-
