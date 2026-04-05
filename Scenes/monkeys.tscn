@@ -1,8 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2gy27xkv6g6e"]
+[gd_scene format=3 uid="uid://dgp7l0exsv0l1"]
 
-[ext_resource type="Script" path="res://Scripts/monkeys.gd" id="1_p3jhy"]
+[sub_resource type="GDScript" id="GDScript_g6su5"]
+script/source = "#extends Character
+#class_name Monkey
+#
+#
+#var alerted: bool = false
+## Called when the node enters the scene tree for the first time.
+#func _ready():
+	#super() # Replace with function body.
+#
+#
+## Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _physics_process(delta):
+	#super(delta)
+	#
+#func _alert():
+	#pass
+#
+#func die():
+	#queue_free()
+	#
+#func hit(damage):
+	#super(damage)
+	#alerted = true
+"
 
-[node name="monkey" type="CharacterBody2D"]
+[node name="monkey" type="CharacterBody2D" unique_id=1538947734]
 collision_layer = 0
 collision_mask = 8
-script = ExtResource("1_p3jhy")
+script = SubResource("GDScript_g6su5")

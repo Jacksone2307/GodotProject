@@ -1,4 +1,5 @@
-extends Monkey
+extends Character
+class_name Monkey
 
 @onready var player : Player = get_tree().get_first_node_in_group("Player")
 @export var debugging: bool
@@ -6,6 +7,7 @@ extends Monkey
 var counter = 0
 var run_speed = 50
 var walk_speed = run_speed * 0.75
+var alerted: bool = false
 
 
 
@@ -123,3 +125,10 @@ func passive_movement():
 	
 func attack():
 	player.hit(20)
+	
+func die():
+	queue_free()
+	
+func hit(damage):
+	super(damage)
+	alerted = true
