@@ -12,6 +12,8 @@ var run_speed = 50
 var walk_speed = run_speed * 0.75
 var alerted: bool = false
 
+var attack_range = 26
+
 
 
 var see_player: bool = false
@@ -59,19 +61,23 @@ func enable_disable_area2Ds():
 
 func chase_and_attack():
 	#Jump if chasing player but blocked.
-	
 	if counter % 60 == 0 and is_on_wall():
 		velocity.y = -randf_range(0.75, 1) * 250
-	if player.position.x < position.x:
-		velocity.x = -run_speed
-	elif player.position.x > position.x:
-		velocity.x = run_speed
-	else:
-		velocity.x = 0
-		
-	var distance = global_position.distance_to(player.global_position)
-	if distance < 26 and counter % 40 == 0:
+
+	var distance = player.global_position.x - global_position.x
+	if debugging: print(distance)
+	
+	#If within range, attack
+	if abs(distance) < attack_range and counter % 40 == 0:
 		attack()
+	
+	
+	#Move to player, but stop a little bit out
+	if distance > attack_range:
+		velocity.x = run_speed
+	elif distance < - attack_range:
+		velocity.x = -run_speed
+	else: velocity.x = 0
 
 
 func _on_area_2d_right_body_entered(body):
