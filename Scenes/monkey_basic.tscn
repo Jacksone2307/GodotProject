@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://b32twcrnffrpt"]
+[gd_scene format=3 uid="uid://b32twcrnffrpt"]
 
-[ext_resource type="Script" path="res://Scripts/MonkeyBasic.gd" id="1_8htfm"]
+[ext_resource type="Script" uid="uid://b0ssf8vvx5m82" path="res://Scripts/MonkeyBasic.gd" id="1_8htfm"]
 [ext_resource type="Texture2D" uid="uid://dc6v4erc5siw5" path="res://sprites/enemy.png" id="2_cmqy6"]
 [ext_resource type="StyleBox" uid="uid://befil76w708d5" path="res://sprites/EmptyHealthBox.tres" id="3_hjmlj"]
 [ext_resource type="StyleBox" uid="uid://0gv70q18guun" path="res://sprites/EnemyHealthBox.tres" id="4_ex78u"]
@@ -11,20 +11,20 @@ size = Vector2(16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_vpu1e"]
 radius = 192.167
 
-[node name="monkey_basic" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider") groups=["Monkeys"]]
+[node name="monkey_basic" type="CharacterBody2D" unique_id=859385726 node_paths=PackedStringArray("health_bar", "collider") groups=["Monkeys"]]
 collision_layer = 4
 collision_mask = 9
 script = ExtResource("1_8htfm")
 health_bar = NodePath("ProgressBar")
 collider = NodePath("CollisionShape2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1785194024]
 texture = ExtResource("2_cmqy6")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2006547141]
 shape = SubResource("RectangleShape2D_y4f12")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1952350363]
 offset_left = -14.0
 offset_top = -14.0
 offset_right = 14.0
@@ -34,29 +34,31 @@ theme_override_styles/fill = ExtResource("4_ex78u")
 step = 1.0
 show_percentage = false
 
-[node name="Area2D-Right" type="Area2D" parent="."]
+[node name="Area2D-Right" type="Area2D" parent="." unique_id=209643244]
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D-Right"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D-Right" unique_id=1522789178]
 position = Vector2(8, -2)
 scale = Vector2(2.36887, 1)
 polygon = PackedVector2Array(-3.37713, 2, 40.5256, -22, 40.5256, 26)
 
-[node name="Area2D-Left" type="Area2D" parent="."]
+[node name="Area2D-Left" type="Area2D" parent="." unique_id=1600770841]
 scale = Vector2(-1, 1)
 collision_mask = 2
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D-Left"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D-Left" unique_id=395292432]
 position = Vector2(8, -2)
 scale = Vector2(2.36887, 1)
 polygon = PackedVector2Array(-3.37713, 2, 40.5256, -22, 40.5256, 26)
 
-[node name="Area2D-AgroZone" type="Area2D" parent="."]
+[node name="Area2D-AgroZone" type="Area2D" parent="." unique_id=900931599]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D-AgroZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D-AgroZone" unique_id=2005354371]
 shape = SubResource("CircleShape2D_vpu1e")
 
+[connection signal="off_alert" from="." to="." method="_on_off_alert"]
+[connection signal="on_alert" from="." to="." method="_when_on_alert"]
 [connection signal="body_entered" from="Area2D-Right" to="." method="_on_area_2d_right_body_entered"]
 [connection signal="body_entered" from="Area2D-Left" to="." method="_on_area_2d_left_body_entered"]
 [connection signal="body_exited" from="Area2D-AgroZone" to="." method="_on_area_2d_agro_zone_body_exited"]
