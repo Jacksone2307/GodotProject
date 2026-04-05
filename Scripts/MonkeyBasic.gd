@@ -4,6 +4,9 @@ class_name Monkey
 @onready var player : Player = get_tree().get_first_node_in_group("Player")
 @export var debugging: bool
 
+signal on_alert
+signal off_alert
+
 var counter = 0
 var run_speed = 50
 var walk_speed = run_speed * 0.75
@@ -12,7 +15,6 @@ var alerted: bool = false
 
 
 var see_player: bool = false
-
 var last_position
 
 # Called when the node enters the scene tree for the first time.
@@ -25,13 +27,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	
-	#Update global position
-	if counter % 40 == 0:
-		last_position = global_position
-	
 	super(delta)
+	can_see_player()
+	enable_disable_area2Ds()
+	if alerted:
+		chase_and_attack()
+	else:
+		passive_movement()
+	counter += 1
 	
+func can_see_player():
 	#Ray cast
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(global_position, player.global_position, 0x3) #0x3 specifies 0011 binary enabling layer masks 1 and 2 (ground & player).
@@ -42,8 +47,8 @@ func _physics_process(delta):
 		see_player = true
 	else:
 		see_player = false
-	
-	#Can't see player from behind.
+
+func enable_disable_area2Ds():
 	if $Sprite2D.flip_h:
 		$"Area2D-Left/CollisionPolygon2D".disabled = false
 		$"Area2D-Right/CollisionPolygon2D".disabled = true
@@ -51,58 +56,40 @@ func _physics_process(delta):
 	else:
 		$"Area2D-Left/CollisionPolygon2D".disabled = true
 		$"Area2D-Right/CollisionPolygon2D".disabled = false
+
+func chase_and_attack():
+	#Jump if chasing player but blocked.
 	
-	if alerted:
-		chase()
-		
-		#Jump if chasing player but blocked.
-		if counter % 60 == 0 and global_position == last_position:
-			#if debugging: print("JUMPING")
-			velocity.y = -randf_range(0.75, 1) * 250
-			if int($Sprite2D.flip_h) == 0:
-				velocity.x = -run_speed
-			else:
-				velocity.x = run_speed
-		
-	var distance = global_position.distance_to(player.global_position)
-	if alerted and distance < 26 and counter % 40 == 0:
-		attack()
-	
-		
-		
-	elif not alerted:
-		passive_movement()
-	velocity.x = velocity.x
-		
-		
-	counter += 1
-	
-	
-func chase():
-	set_collision_mask_value(4, false)
+	if counter % 60 == 0 and is_on_wall():
+		velocity.y = -randf_range(0.75, 1) * 250
 	if player.position.x < position.x:
 		velocity.x = -run_speed
-	else:
+	elif player.position.x > position.x:
 		velocity.x = run_speed
-	
-	
-	
+	else:
+		velocity.x = 0
+		
+	var distance = global_position.distance_to(player.global_position)
+	if distance < 26 and counter % 40 == 0:
+		attack()
 
 
 func _on_area_2d_right_body_entered(body):
 	if see_player:
 		#print("Player right")
-		alerted = true
+		emit_signal("on_alert")
 
 
 func _on_area_2d_left_body_entered(body):
 	if see_player:
 		#print("Player left")
-		alerted = true
+		#alerted = true
+		emit_signal("on_alert")
 		
 
 func _on_area_2d_agro_zone_body_exited(body):
-	alerted = false
+	#alerted = false
+	emit_signal("off_alert")
 	#print("Player out of zone")
 	velocity.x = walk_speed
 	markers_up()
@@ -131,4 +118,16 @@ func die():
 	
 func hit(damage):
 	super(damage)
+	#alerted = true
+	emit_signal("on_alert")
+
+
+func _when_on_alert() -> void:
+	set_collision_mask_value(4, false)
 	alerted = true
+
+
+func _on_off_alert() -> void:
+	set_collision_mask_value(4, true)
+	alerted = false
+	

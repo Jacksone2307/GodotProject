@@ -57,6 +57,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D-AgroZone" unique_id=2005354371]
 shape = SubResource("CircleShape2D_vpu1e")
 
+[connection signal="off_alert" from="." to="." method="_on_off_alert"]
+[connection signal="on_alert" from="." to="." method="_when_on_alert"]
 [connection signal="body_entered" from="Area2D-Right" to="." method="_on_area_2d_right_body_entered"]
 [connection signal="body_entered" from="Area2D-Left" to="." method="_on_area_2d_left_body_entered"]
 [connection signal="body_exited" from="Area2D-AgroZone" to="." method="_on_area_2d_agro_zone_body_exited"]
