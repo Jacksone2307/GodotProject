@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -250
 const MAX_NUM_JUMPS = 2
 var num_jumps = 2
 
+signal has_flipped
 
 
 func _physics_process(delta):
@@ -41,5 +42,10 @@ func _input(event):
 
 func die():
 	print("PLAYER DEAD")
-
-
+	
+func look_in_direction():
+	var pre = $Sprite2D.flip_h
+	$Sprite2D.flip_h = get_global_mouse_position() < global_position
+	var post = $Sprite2D.flip_h
+	if pre != post:
+		emit_signal("has_flipped")
