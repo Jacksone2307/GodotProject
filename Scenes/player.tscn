@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctcd5q0jkeuan"]
+[gd_scene format=3 uid="uid://ctcd5q0jkeuan"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_6ngao"]
+[ext_resource type="Script" uid="uid://2qmkt4gs1kep" path="res://Scripts/Player.gd" id="1_6ngao"]
 [ext_resource type="Texture2D" uid="uid://snq2fu60b4em" path="res://sprites/player.png" id="2_eb4y0"]
 [ext_resource type="Texture2D" uid="uid://dq8ovnencufg7" path="res://sprites/gunCentred.png" id="3_33drr"]
-[ext_resource type="Script" path="res://Scripts/gun.gd" id="4_iyoiu"]
+[ext_resource type="Script" uid="uid://cmdlowg5r0op7" path="res://Scripts/gun.gd" id="4_iyoiu"]
 [ext_resource type="PackedScene" uid="uid://cb088p0vlq7ew" path="res://Scenes/bullet.tscn" id="5_xv0yt"]
 [ext_resource type="StyleBox" uid="uid://befil76w708d5" path="res://sprites/EmptyHealthBox.tres" id="6_7y3ct"]
 [ext_resource type="StyleBox" uid="uid://ddo5pxpgw5yer" path="res://sprites/PlayerHealthBox.tres" id="7_wksxd"]
@@ -11,20 +11,20 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxkq3"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health_bar", "collider") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=693500109 node_paths=PackedStringArray("health_bar", "collider") groups=["Player"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_6ngao")
 health_bar = NodePath("ProgressBar")
 collider = NodePath("CollisionShape2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=838679264]
 texture = ExtResource("2_eb4y0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1120002529]
 shape = SubResource("RectangleShape2D_qxkq3")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=129815130]
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
@@ -35,16 +35,16 @@ drag_top_margin = 0.4
 drag_right_margin = 0.4
 editor_draw_drag_margin = true
 
-[node name="Gun" type="Sprite2D" parent="."]
+[node name="Gun" type="Sprite2D" parent="." unique_id=858406482]
 position = Vector2(12, 0)
 texture = ExtResource("3_33drr")
 script = ExtResource("4_iyoiu")
 bullet_scene = ExtResource("5_xv0yt")
 
-[node name="Marker2D" type="Marker2D" parent="Gun"]
+[node name="Marker2D" type="Marker2D" parent="Gun" unique_id=1821149996]
 position = Vector2(4, 0)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=484783813]
 offset_left = -14.0
 offset_top = -14.0
 offset_right = 14.0
@@ -53,3 +53,5 @@ theme_override_styles/background = ExtResource("6_7y3ct")
 theme_override_styles/fill = ExtResource("7_wksxd")
 step = 1.0
 show_percentage = false
+
+[connection signal="has_flipped" from="." to="Gun" method="_on_player_has_flipped"]

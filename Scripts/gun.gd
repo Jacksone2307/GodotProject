@@ -4,6 +4,8 @@ extends Sprite2D
 @onready var marker_2d : Marker2D = $Marker2D
 const pi = 3.14159
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -12,16 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	look_at(get_global_mouse_position())
-	#Make gun always face up.
-	if (0.5 * pi) < fmod(abs(rotation), 2*pi) and fmod(abs(rotation), 2*pi) < (1.5 * pi):
-		flip_v = 1
-	else:
-		flip_v = 0
-	
-	var direction = Input.get_axis("Left", "Right")
-	if direction:
-		position.x = direction*abs(position.x)
-		marker_2d.position.y 
+	face_up()
 
 func shoot():
 	var bullet = bullet_scene.instantiate()
@@ -34,3 +27,13 @@ func shoot():
 
 
 	
+func face_up():
+	#Make gun always face up.
+	if (0.5 * pi) < fmod(abs(rotation), 2*pi) and fmod(abs(rotation), 2*pi) < (1.5 * pi):
+		flip_v = 1
+	else:
+		flip_v = 0
+
+func _on_player_has_flipped() -> void:
+	position.x = -position.x
+	marker_2d.position.y 

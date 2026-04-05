@@ -19,9 +19,8 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
-	if velocity.x:
-		$Sprite2D.flip_h = velocity.x < 0
 	
+	look_in_direction()
 	move_and_slide()
 	
 func hit(damage):
@@ -32,5 +31,7 @@ func hit(damage):
 		
 func die():
 	pass
-
-
+	
+func look_in_direction():
+	if velocity.x:
+		$Sprite2D.flip_h = velocity.x < 0
