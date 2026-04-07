@@ -3,6 +3,8 @@ class_name Monkey
 
 @onready var player : Player = get_tree().get_first_node_in_group("Player")
 @export var debugging: bool
+@export var attack_range: int = 26
+
 
 signal on_alert
 signal off_alert
@@ -12,7 +14,7 @@ var run_speed = 50
 var walk_speed = run_speed * 0.75
 var alerted: bool = false
 
-var attack_range = 26
+
 
 
 
@@ -65,7 +67,6 @@ func chase_and_attack():
 		velocity.y = -randf_range(0.75, 1) * 250
 
 	var distance = player.global_position.x - global_position.x
-	if debugging: print(distance)
 	
 	#If within range, attack
 	if abs(distance) < attack_range and counter % 40 == 0:
@@ -82,21 +83,16 @@ func chase_and_attack():
 
 func _on_area_2d_right_body_entered(body):
 	if see_player:
-		#print("Player right")
 		emit_signal("on_alert")
 
 
 func _on_area_2d_left_body_entered(body):
 	if see_player:
-		#print("Player left")
-		#alerted = true
 		emit_signal("on_alert")
 		
 
 func _on_area_2d_agro_zone_body_exited(body):
-	#alerted = false
 	emit_signal("off_alert")
-	#print("Player out of zone")
 	velocity.x = walk_speed
 	markers_up()
 
@@ -112,7 +108,6 @@ func passive_movement():
 			velocity.x = walk_speed
 	
 	if counter % randi_range(50,150) == 0:
-		#if debugging: print("STOPPING")
 		velocity.x = 0
 		
 	
@@ -124,7 +119,6 @@ func die():
 	
 func hit(damage):
 	super(damage)
-	#alerted = true
 	emit_signal("on_alert")
 
 

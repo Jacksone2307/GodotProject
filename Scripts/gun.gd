@@ -1,5 +1,7 @@
 extends Sprite2D
 
+class_name Gun
+
 @export var bullet_scene: PackedScene
 @onready var marker_2d : Marker2D = $Marker2D
 const pi = 3.14159
