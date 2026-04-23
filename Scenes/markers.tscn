@@ -1,34 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://djq3hfchlob1t"]
+[gd_scene format=3 uid="uid://djq3hfchlob1t"]
 
-[ext_resource type="Texture2D" uid="uid://c7uerg7kqay1i" path="res://Tileset/markers.png" id="1_yffp1"]
+[ext_resource type="TileSet" uid="uid://6he0ubkg1y2m" path="res://Tileset/markers.tres" id="1_tu3tp"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x1cx7"]
-texture = ExtResource("1_yffp1")
-0:0/0 = 0
-0:0/0/terrain_set = 0
-0:0/0/terrain = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
-0:0/0/terrains_peering_bit/right_side = 0
-0:0/0/terrains_peering_bit/bottom_right_corner = 0
-0:0/0/terrains_peering_bit/bottom_side = 0
-0:0/0/terrains_peering_bit/bottom_left_corner = 0
-0:0/0/terrains_peering_bit/left_side = 0
-0:0/0/terrains_peering_bit/top_left_corner = 0
-0:0/0/terrains_peering_bit/top_side = 0
-0:0/0/terrains_peering_bit/top_right_corner = 0
-
-[sub_resource type="TileSet" id="TileSet_vjllu"]
-physics_layer_0/collision_layer = 8
-physics_layer_0/collision_mask = 0
-terrain_set_0/mode = 0
-terrain_set_0/terrain_0/name = "Markers"
-terrain_set_0/terrain_0/color = Color(0.655377, 0.198342, 0.233939, 1)
-sources/0 = SubResource("TileSetAtlasSource_x1cx7")
-
-[node name="MarkerMap" type="TileMap"]
-tile_set = SubResource("TileSet_vjllu")
+[node name="MarkerMap" type="TileMap" unique_id=44059233]
+tile_set = ExtResource("1_tu3tp")
 format = 2
 layer_0/z_index = 1
 layer_0/tile_data = PackedInt32Array(0, 0, 0)

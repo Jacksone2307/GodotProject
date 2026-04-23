@@ -63,6 +63,7 @@ Keyboard_R={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Monkeys"
 2d_physics/layer_4="Markers"
+2d_physics/layer_5="Edge Markers"
 
 [rendering]
 

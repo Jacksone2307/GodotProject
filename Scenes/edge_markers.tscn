@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cab7n6kdmd3n"]
+
+[ext_resource type="TileSet" uid="uid://chyk4ixsp08uv" path="res://Tileset/edge_markers.tres" id="1_jyeie"]
+
+[node name="EdgeMarkerMap" type="TileMap" unique_id=44059233]
+tile_set = ExtResource("1_jyeie")
+format = 2
+layer_0/z_index = 1
+layer_0/tile_data = PackedInt32Array(0, 0, 0)
