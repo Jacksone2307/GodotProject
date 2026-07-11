@@ -66,17 +66,17 @@ func chase_and_attack():
 	if counter % 60 == 0 and is_on_wall():
 		velocity.y = -randf_range(0.75, 1) * 250
 
-	var distance = player.global_position.x - global_position.x
-	
+	var distance_x = player.global_position.x - global_position.x
+	var distance = global_position.distance_to(player.global_position)
 	#If within range, attack
 	if abs(distance) < attack_range and counter % 40 == 0:
 		attack()
 	
 	
 	#Move to player, but stop a little bit out
-	if distance > attack_range:
+	if distance_x > attack_range:
 		velocity.x = run_speed
-	elif distance < - attack_range:
+	elif distance_x < - attack_range:
 		velocity.x = -run_speed
 	else: velocity.x = 0
 
