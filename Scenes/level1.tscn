@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://de875nv6v88cb"]
+[gd_scene format=3 uid="uid://d12jq8pdlo6vw"]
 
 [ext_resource type="Script" uid="uid://dxs5dv857wakq" path="res://Scripts/main.gd" id="1_dh5ma"]
 [ext_resource type="PackedScene" uid="uid://ctcd5q0jkeuan" path="res://Scenes/player.tscn" id="2_2jgd2"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bdxvswkpf24m8" path="res://Scenes/Ground.tscn" id="6_xeeej"]
 [ext_resource type="PackedScene" uid="uid://cab7n6kdmd3n" path="res://Scenes/edge_markers.tscn" id="7_6bp64"]
 
-[node name="Node2D" type="Node2D" unique_id=529171727]
+[node name="Level1" type="Node2D" unique_id=529171727]
 script = ExtResource("1_dh5ma")
 player_scene = ExtResource("2_2jgd2")
 monkey_basic_scene = ExtResource("4_h338m")
