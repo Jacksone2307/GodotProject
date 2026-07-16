@@ -15,5 +15,3 @@ script = ExtResource("4_dgcoe")
 
 [node name="Marker2D" type="Marker2D" parent="Gun" index="0" unique_id=731259456]
 position = Vector2(4, 0)
-
-[connection signal="on_alert" from="." to="Gun" method="_when_monkey_basic_on_alert"]

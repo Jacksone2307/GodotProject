@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://de875nv6v88cb"]
+
+[ext_resource type="Script" uid="uid://dxs5dv857wakq" path="res://Scripts/main.gd" id="1_dh5ma"]
+[ext_resource type="PackedScene" uid="uid://ctcd5q0jkeuan" path="res://Scenes/player.tscn" id="2_2jgd2"]
+[ext_resource type="PackedScene" uid="uid://b32twcrnffrpt" path="res://Scenes/monkey_basic.tscn" id="4_h338m"]
+[ext_resource type="PackedScene" uid="uid://djq3hfchlob1t" path="res://Scenes/markers.tscn" id="5_vsedr"]
+[ext_resource type="PackedScene" uid="uid://bfn8wmlw2dnb0" path="res://Scenes/monkey_gun.tscn" id="6_uonev"]
+[ext_resource type="PackedScene" uid="uid://bdxvswkpf24m8" path="res://Scenes/Ground.tscn" id="6_xeeej"]
+[ext_resource type="PackedScene" uid="uid://cab7n6kdmd3n" path="res://Scenes/edge_markers.tscn" id="7_6bp64"]
+
+[node name="Node2D" type="Node2D" unique_id=529171727]
+script = ExtResource("1_dh5ma")
+player_scene = ExtResource("2_2jgd2")
+monkey_basic_scene = ExtResource("4_h338m")
+
+[node name="monkey_basic" parent="." unique_id=47819050 instance=ExtResource("4_h338m")]
+position = Vector2(68, 0)
+debugging = true
+
+[node name="Player" parent="." unique_id=1721863844 instance=ExtResource("2_2jgd2")]
+position = Vector2(-54, 4)
+
+[node name="monkey_basic2" parent="." unique_id=1208963018 instance=ExtResource("4_h338m")]
+position = Vector2(330, -57)
+flipped = true
+
+[node name="monkey_basic3" parent="." unique_id=1852363661 instance=ExtResource("6_uonev")]
+position = Vector2(579.924, -83.1986)
+collision_mask = 9
+
+[node name="MarkerMap" parent="." unique_id=2096396235 instance=ExtResource("5_vsedr")]
+modulate = Color(0.49019608, 0, 0.5411765, 1)
+layer_0/tile_data = PackedInt32Array(0, 0, 0, -262125, 0, 0, -327643, 0, 0, -327647, 0, 0, -131067, 0, 0)
+
+[node name="GroundMap" parent="." unique_id=1982827677 instance=ExtResource("6_xeeej")]
+layer_0/tile_data = PackedInt32Array(0, 65536, 1, 131066, 65536, 3, 131067, 65536, 0, 131068, 65536, 0, 131069, 65536, 0, 131070, 65536, 0, 131071, 65536, 1, 65536, 65536, 1, 65537, 65536, 1, 65538, 65536, 0, 65539, 65536, 0, 65540, 65536, 0, 65541, 65536, 0, 65542, 65536, 1, 196605, 65536, 2, 196606, 65536, 2, 196607, 65536, 2, 131072, 65536, 2, 131073, 65536, 2, 131074, 65536, 2, 131075, 65536, 2, 131076, 65536, 2, 131077, 65536, 2, 196604, 65536, 2, 196603, 0, 2, 131065, 0, 3, 131078, 65536, 2, 6, 0, 1, -65530, 0, 0, -65529, 65536, 0, 7, 65536, 1, 65543, 65536, 1, 131079, 131072, 2, -65528, 65536, 0, -65527, 65536, 0, -65526, 65536, 0, -65525, 65536, 0, -65524, 65536, 1, 12, 65536, 1, 11, 65536, 1, 10, 65536, 1, 9, 65536, 1, 8, 65536, 1, 65544, 65536, 2, 65545, 65536, 2, 65546, 65536, 2, 65547, 65536, 2, 65548, 65536, 2, 65549, 131072, 2, 13, 131072, 1, -65523, 131072, 1, 65551, 65536, 3, 65552, 65536, 3, 65553, 65536, 3, 65554, 65536, 3, -131059, 131072, 1, -196595, 131072, 0, -131060, 0, 1, -196596, 0, 1, -262132, 196608, 0, -196592, 0, 2, -262128, 0, 0, -262127, 131072, 0, -196591, 131072, 2, -196588, 0, 0, -196587, 65536, 0, -196586, 65536, 0, -196585, 65536, 0, -196584, 65536, 0, -196583, 65536, 0, -196582, 65536, 0, -196581, 65536, 0, -196580, 131072, 0, -131051, 65536, 2, -131050, 65536, 2, -131049, 65536, 2, -131048, 65536, 2, -131047, 65536, 2, -131046, 65536, 2, -131052, 0, 2, -131045, 65536, 2, -131044, 131072, 2, 65550, 65536, 3, -262110, 0, 0, -262109, 65536, 0, -262108, 131072, 0, -196574, 0, 2, -196573, 65536, 1, -196572, 131072, 1, -131037, 0, 2, -131036, 131072, 2, -131035, 65536, 3, -131034, 65536, 3, -131033, 65536, 3, -131032, 131072, 3, -262114, 0, 2, -327650, 0, 1, -393186, 0, 1, -458722, 0, 1, -524258, 0, 0, -458721, 131072, 1, -393185, 131072, 1, -327649, 131072, 1, -262113, 131072, 2, -524257, 131072, 0, 65555, 131072, 3, -65536, 131072, 0, 65535, 0, 1, 1, 131072, 0, -1, 0, 0)
+
+[node name="EdgeMarkerMap" parent="." unique_id=44059233 instance=ExtResource("7_6bp64")]
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 20, 0, 0, -196567, 0, 0, -327647, 0, 0, -262115, 0, 0)
